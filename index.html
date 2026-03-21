@@ -275,8 +275,6 @@ function nextCover() {
 // 페이지 로드 시 실행
 loadCovers();
 
-loadCovers();
-
 /* ═══════════════════════════════════════════════════════
    SONG DATABASE — 236곡 (엑셀 원본)
 ═══════════════════════════════════════════════════════ */
@@ -310,8 +308,6 @@ function initToday() {
   const cls    = { 3:'p1', 2:'p2', 1:'p3', 0:'p3' };
 
   const ytQ = encodeURIComponent('주현미 ' + pick.title);
-  const mlQ = encodeURIComponent(pick.title + ' 주현미');
-  const spQ = encodeURIComponent('주현미 ' + pick.title);
 
   document.getElementById('today-out').innerHTML = `
     <span class="p-badge ${cls[prio]}">${labels[prio]}</span>
@@ -319,10 +315,15 @@ function initToday() {
     <div class="today-info">발매일 ${pick.year}.${mm}.${dd} &nbsp;/&nbsp; ${ago}년 전</div>
     ${pick.lyric ? `<div class="today-lyric">❝ ${pick.lyric} ❞</div>` : ''}
     ${pick.album ? `<div class="today-album">📀 ${pick.album}</div>` : ''}
-    <div class="link-row">
-      <a class="mlink" href="https://www.youtube.com/results?search_query=${ytQ}" target="_blank">▶ YouTube</a>
-      <a class="mlink" href="https://www.melon.com/search/total/index.htm?q=${mlQ}" target="_blank">♬ 멜론</a>
-      <a class="mlink" href="https://open.spotify.com/search/${spQ}" target="_blank">🎵 Spotify</a>
+    <div class="link-row" style="margin-bottom:14px">
+      <a class="mlink" href="https://www.youtube.com/results?search_query=${ytQ}" target="_blank">▶ YouTube에서 검색</a>
+    </div>
+    <div class="video-frame" style="margin-top:0">
+      <iframe
+        src="https://www.youtube.com/embed?listType=search&list=${ytQ}&index=0&rel=0&modestbranding=1"
+        allowfullscreen loading="lazy"
+        allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture">
+      </iframe>
     </div>`;
 }
 
