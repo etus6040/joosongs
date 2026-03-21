@@ -10,7 +10,7 @@
  */
 
 const CHANNEL_ID = 'UCe8SFe2MNpnLnJEBNhCOhxg'; // @jootv.official 채널 ID
-const MAX_RESULTS = 50;
+const MAX_RESULTS = 500;
 const CACHE_SECONDS = 60 * 60 * 6; // 6시간 캐시
 
 export default async function handler(req, res) {
