@@ -54,6 +54,10 @@ html,body{background:var(--bg);color:var(--tx);font-family:'Noto Serif KR',serif
 .mlink{font-size:11px;color:var(--tx2);border:.5px solid var(--bd);padding:5px 13px;text-decoration:none;font-family:'Noto Sans KR',sans-serif;font-weight:400;transition:border-color .15s,color .15s}
 .mlink:hover{border-color:var(--acc);color:var(--acc)}
 
+.today-embed-area{margin-top:14px}
+.today-embed-area .video-frame{margin-top:0}
+.today-embed-loading{font-size:11px;color:var(--tx3);font-family:'Noto Sans KR',sans-serif;font-weight:300;padding:8px 0}
+
 /* ── COVER VIDEO ── */
 .cover-wrap{border-top:.5px solid var(--bd2);margin-top:24px;padding-top:22px}
 .cover-label{font-size:9px;letter-spacing:.2em;color:var(--tx3);text-transform:uppercase;font-family:'Noto Sans KR',sans-serif;font-weight:300;margin-bottom:14px}
@@ -281,6 +285,27 @@ loadCovers();
 const SONGS=[{"title":"우야화","lyric":"","year":1987,"month":6,"day":30,"album":"지난 어느 날/고향 못잊어"},{"title":"가지마오가지마오","lyric":"사랑하기에울고있어요돌아","year":1963,"month":1,"day":1,"album":""},{"title":"탄금대사연","lyric":"탄금정구비돌아","year":1968,"month":10,"day":15,"album":"주현미4집탄금대사연"},{"title":"때늦은후회지만","lyric":"","year":1970,"month":8,"day":7,"album":""},{"title":"인생역","lyric":"어디서왔다가어디로","year":1975,"month":11,"day":20,"album":""},{"title":"어제와오늘","lyric":"어제를떠나온희미한","year":1976,"month":9,"day":6,"album":""},{"title":"풀피리","lyric":"어디서불고있나","year":1976,"month":9,"day":6,"album":""},{"title":"해남아가씨","lyric":"","year":1977,"month":12,"day":1,"album":""},{"title":"영동부르스","lyric":"","year":1984,"month":4,"day":15,"album":""},{"title":"망향가","lyric":"","year":1985,"month":2,"day":1,"album":"주현미-이별의항구"},{"title":"이별의항구","lyric":"당신의눈물도실어주세요아픔도실","year":1985,"month":2,"day":1,"album":"주현미-이별의항구"},{"title":"풀잎에맺힌이슬","lyric":"","year":1985,"month":2,"day":4,"album":""},{"title":"애정","lyric":"","year":1985,"month":3,"day":1,"album":"주현미 2집 - 님아 가지말아요"},{"title":"옹달샘","lyric":"","year":1985,"month":3,"day":1,"album":"주현미 2집 - 님아 가지말아요"},{"title":"타인의정","lyric":"","year":1985,"month":3,"day":1,"album":"주현미 2집 - 님아 가지말아요"},{"title":"그정을어이해요","lyric":"정주고가면안돼요나를두고","year":1985,"month":3,"day":11,"album":"주현미 1집"},{"title":"모국의팔월한가위","lyric":"지금도눈을감으면생각이나","year":1985,"month":3,"day":11,"album":"주현미 1집"},{"title":"미련의블루스","lyric":"","year":1985,"month":3,"day":11,"album":"주현미 1집"},{"title":"지울수없는정","lyric":"사랑이무엇이길래정이무엇","year":1985,"month":3,"day":11,"album":"주현미 1집"},{"title":"내고향인천항","lyric":"그리운내고향","year":1985,"month":5,"day":1,"album":""},{"title":"월악산","lyric":"월악산난간머리희미한","year":1985,"month":5,"day":20,"album":"충청북도청풍명월노래모음"},{"title":"월미도를아시나요","lyric":"","year":1985,"month":6,"day":1,"album":""},{"title":"님아가지말아요","lyric":"","year":1985,"month":6,"day":1,"album":"주현미 2집 - 님아 가지말아요"},{"title":"가을밤외기러기","lyric":"","year":1985,"month":8,"day":30,"album":""},{"title":"고향의품에","lyric":"물방아돌아가고","year":1985,"month":10,"day":1,"album":""},{"title":"무교동연인들","lyric":"오색등네온불이꽃을피우면","year":1985,"month":10,"day":1,"album":"주현미힛트곡모음집"},{"title":"그정때문에","lyric":"잊고살자다짐해도","year":1985,"month":10,"day":20,"album":""},{"title":"돌아와주세요","lyric":"그대나늘진정사랑","year":1985,"month":10,"day":20,"album":"주현미 4집"},{"title":"때로는그리움이","lyric":"얼굴은잊는다해도","year":1985,"month":10,"day":20,"album":"주현미힛트곡모음집"},{"title":"쓸쓸한계절","lyric":"낙엽은떨어져서","year":1985,"month":10,"day":20,"album":"주현미힛트곡모음집"},{"title":"잊어야지","lyric":"잊어야지잊어야지","year":1985,"month":10,"day":20,"album":"주현미힛트곡모음집"},{"title":"명동야곡","lyric":"네온이춤을추는명동의밤거리그님","year":1985,"month":11,"day":1,"album":"주현미-울면서후회하네"},{"title":"바보인가봐","lyric":"사랑이무엇인지행복이무엇","year":1985,"month":11,"day":1,"album":"주현미-울면서후회하네"},{"title":"울면서후회하네","lyric":"순정을다바쳐서믿었던그사람","year":1985,"month":11,"day":1,"album":"주현미-울면서후회하네"},{"title":"태평무","lyric":"","year":1986,"month":4,"day":18,"album":""},{"title":"그냥가세요","lyric":"","year":1986,"month":7,"day":19,"album":""},{"title":"첫정","lyric":"잊어야하기에가슴은아파도","year":1986,"month":8,"day":1,"album":""},{"title":"이태원연가","lyric":"밤깊은이태원불빛속에서젖어버린","year":1986,"month":9,"day":1,"album":""},{"title":"눈물의블루스","lyric":"오색등네온불이속삭이듯나","year":1986,"month":10,"day":1,"album":"주현미-내가왜웁니까"},{"title":"내가왜웁니까","lyric":"울지않아요내가왜웁니까내","year":1986,"month":10,"day":20,"album":"주현미-내가왜웁니까"},{"title":"다시보고또보고","lyric":"서로가미워하지않으면서도","year":1986,"month":10,"day":20,"album":"주현미 2집"},{"title":"사랑은하지않으리","lyric":"사랑이눈물이라면하지말것","year":1986,"month":11,"day":1,"album":""},{"title":"외로운밤","lyric":"그님은가고세월은흘러도당","year":1987,"month":1,"day":1,"album":""},{"title":"사랑이여다시한번","lyric":"사랑했던너와난","year":1987,"month":10,"day":29,"album":""},{"title":"동성로의밤","lyric":"","year":1988,"month":2,"day":3,"album":""},{"title":"비내리는밤의부루스","lyric":"비가오고있어요어둠이깔리","year":1988,"month":2,"day":3,"album":""},{"title":"비에젖은터미널","lyric":"밤비가하염없이내리는비에젖은터","year":1988,"month":3,"day":11,"album":""},{"title":"신사동그사람","lyric":"희미한불빛사이로마주치그눈길","year":1988,"month":3,"day":11,"album":"주현미-신사동그사람"},{"title":"흔들리는갈대","lyric":"","year":1988,"month":3,"day":11,"album":"주현미-신사동그사람"},{"title":"비내리는영동교","lyric":"밤비내리는영동교를","year":1988,"month":12,"day":1,"album":"주현미 1집 - 비내리는 영동교"},{"title":"등대섬의추억","lyric":"가슴은아파도헤어져야하","year":1989,"month":2,"day":15,"album":""},{"title":"짝사랑","lyric":"마주치는눈빛이무엇을","year":1989,"month":2,"day":15,"album":"89 주현미"},{"title":"추억속에서","lyric":"그리움을엮어서","year":1989,"month":2,"day":15,"album":"89 주현미"},{"title":"상해의밤","lyric":"춤을추는은빛물결","year":1989,"month":3,"day":10,"album":""},{"title":"빗물이야","lyric":"아무리이마음이아프다해도","year":1989,"month":5,"day":1,"album":""},{"title":"나만을사랑해줘요","lyric":"철없는여자라고","year":1990,"month":1,"day":1,"album":""},{"title":"단심","lyric":"유리창에흘러내린","year":1990,"month":5,"day":1,"album":""},{"title":"사할린","lyric":"눈물조차얼어붙은","year":1990,"month":5,"day":1,"album":""},{"title":"스무살때어느날","lyric":"찬바람만스쳐도가슴은","year":1990,"month":5,"day":1,"album":""},{"title":"잠깐만","lyric":"잠깐만잠깐만그발길을","year":1990,"month":5,"day":1,"album":"주현미 10집"},{"title":"재회","lyric":"그대가슴에나이렇게","year":1990,"month":5,"day":1,"album":""},{"title":"천호동의밤","lyric":"차한잔을들때마다","year":1990,"month":5,"day":1,"album":""},{"title":"체념","lyric":"왜그래가는사람을","year":1990,"month":5,"day":1,"album":""},{"title":"커피부르스","lyric":"가로등불빛슬쓸한","year":1990,"month":5,"day":1,"album":""},{"title":"힘없이고한이별","lyric":"울긴요누가울어요","year":1990,"month":5,"day":1,"album":""},{"title":"추억으로가는당신","lyric":"나는알아요당신이나를","year":1991,"month":8,"day":1,"album":"주현미 11집"},{"title":"눈물의마지막밤","lyric":"난이제알아요당신을떠나야","year":1992,"month":4,"day":1,"album":""},{"title":"이별이흔한거리","lyric":"네온사인깜빡이는하얀불빛","year":1992,"month":4,"day":1,"album":""},{"title":"당신은바보야","lyric":"내귓가에속삭이며","year":1992,"month":4,"day":30,"album":""},{"title":"또만났네요","lyric":"또만났네또만났어","year":1992,"month":4,"day":30,"album":"주현미 12집"},{"title":"외로운시간표","lyric":"밤비가하염없이쏟아지는밤네온빛","year":1992,"month":6,"day":10,"album":""},{"title":"장미거리","lyric":"또밤이오는가요꿈을꾸는","year":1993,"month":8,"day":1,"album":"93 주현미"},{"title":"정으로사는세상","lyric":"세상에흔한것이여자의","year":1993,"month":8,"day":1,"album":"93 주현미"},{"title":"청춘","lyric":"세월아가지를마라","year":1995,"month":1,"day":1,"album":""},{"title":"인생유정","lyric":"저강물흘러흘러어디로가나정처없","year":1996,"month":1,"day":1,"album":"인생유정"},{"title":"대왕의길","lyric":"화산가는길은걸음마다슬픔이러냐","year":1998,"month":4,"day":15,"album":""},{"title":"내가슴의화양강","lyric":"그때나지금이나화양강은흐르건만","year":1999,"month":11,"day":1,"album":""},{"title":"홍천으로오세요","lyric":"여기는홍천강원도홍천산이있고","year":1999,"month":11,"day":1,"album":"홍천으로 오세요"},{"title":"차한잔어때요","lyric":"저달을보면서별이라해도","year":2000,"month":6,"day":22,"album":"러브레터"},{"title":"러브레터","lyric":"구름에달빛가린캄캄한밤에나홀로","year":2000,"month":8,"day":1,"album":"러브레터"},{"title":"없었던일로해요","lyric":"없었던일로해요없었던일로","year":2000,"month":8,"day":3,"album":"러브레터"},{"title":"마라도","lyric":"밤비마저스산스럽다모슬포부두","year":2003,"month":1,"day":1,"album":"러브레터"},{"title":"정말좋았네","lyric":"사랑그사랑이정말좋았네","year":2003,"month":5,"day":1,"album":"정말 좋았네"},{"title":"사랑이무량하오","lyric":"바람에몸맡기고꽃잎날리오","year":2006,"month":4,"day":1,"album":"주현미 17집 - 어허라 사랑"},{"title":"어허라사랑","lyric":"어라어허라사랑이오네","year":2006,"month":4,"day":1,"album":"주현미 17집 - 어허라 사랑"},{"title":"달아달아","lyric":"한잔술따르리다","year":2006,"month":8,"day":11,"album":"주현미 17집 - 어허라 사랑"},{"title":"짜라자짜","lyric":"사랑이좋아보여서그대가좋아보여","year":2009,"month":2,"day":17,"album":""},{"title":"청풍명월","lyric":"굽이굽이물따라굽이굽이산따라","year":2009,"month":3,"day":31,"album":"I LOVE 제천"},{"title":"그다음은나도몰라요","lyric":"두번다시안올것처럼발걸음뚝끊더","year":2010,"month":1,"day":1,"album":""},{"title":"사랑한다","lyric":"","year":2010,"month":3,"day":1,"album":""},{"title":"남인가요","lyric":"밤이오는소리길을나선다","year":2011,"month":12,"day":19,"album":"주현미의러브레터"},{"title":"내일가면안되나요","lyric":"오늘은가지말아요내일가면안되나요","year":2011,"month":12,"day":19,"album":"주현미의러브레터"},{"title":"뜻밖의이별","lyric":"콧날이찡긋코끝이찡긋","year":2011,"month":12,"day":19,"album":"주현미의러브레터"},{"title":"바보사랑","lyric":"사랑할거면사랑하세요","year":2011,"month":12,"day":19,"album":"주현미의러브레터"},{"title":"사랑이오네","lyric":"저만치오네내사랑이날찾아다가오네","year":2011,"month":12,"day":19,"album":"주현미의러브레터"},{"title":"여백","lyric":"처음만났던그순간부터우린서로","year":2011,"month":12,"day":19,"album":"주현미의러브레터"},{"title":"동행","lyric":"가슴에박힌아픈별들시간은흘러만","year":2014,"month":4,"day":3,"album":"밀리언셀러"},{"title":"가을과겨울사이","lyric":"창을닫기엔아직햇살이뜨겁고","year":2014,"month":8,"day":27,"album":"주현미 30TH ANNIVERSARY ALBUM"},{"title":"빗속에서","lyric":"빗속을혼자걸으며그대를떠올리네요","year":2014,"month":8,"day":27,"album":"주현미 30TH ANNIVERSARY ALBUM"},{"title":"소녀일기","lyric":"창가에기대어앉아달빛에비쳐하는말","year":2014,"month":8,"day":27,"album":"주현미 30TH ANNIVERSARY ALBUM"},{"title":"사랑의마법사","lyric":"사랑이무엇인지그리움이무엇인지","year":2016,"month":4,"day":6,"album":"소백산"},{"title":"소백산","lyric":"연화봉천문대에별들이속삭인다","year":2016,"month":4,"day":6,"album":"소백산"},{"title":"그대를불러봅니다","lyric":"가슴깊이새겨놓았던사람하늘이맺어준사람","year":2018,"month":3,"day":25,"album":"부잣집아들 OST"},{"title":"여정","lyric":"아무리예쁜꽃도세월가면지듯이","year":2018,"month":10,"day":5,"album":"여정"},{"title":"석양에띄우는편지","lyric":"꽃보다붉은저녁노을이","year":2019,"month":8,"day":11,"album":"세상에서제일예쁜내딸 OST"},{"title":"꽃피는청계산","lyric":"청룡의기세안고여의주를품은산아","year":2020,"month":6,"day":15,"album":"주현미 20TH"},{"title":"여인의눈물","lyric":"사랑이사랑으로남아있나요기억저편난어디쯤에있나","year":2020,"month":6,"day":15,"album":"주현미 20TH"},{"title":"상심","lyric":"오늘만은잡을수없어요돌아서는그사람을","year":2020,"month":7,"day":22,"album":"주현미 20TH"},{"title":"세번의사랑","lyric":"그리운마음에정처없이걸어도","year":2020,"month":7,"day":22,"album":"주현미 20TH"},{"title":"돌아오지마세요","lyric":"떠날땐말없이훌쩍떠나더니","year":2020,"month":8,"day":19,"album":"주현미 20TH"},{"title":"물망초사연","lyric":"사랑의추억이그림처럼다가와","year":2020,"month":8,"day":19,"album":"주현미 20TH"},{"title":"그대와차차차","lyric":"가슴울려오는리듬소리한껏몸을맡긴채로서로","year":2020,"month":9,"day":25,"album":"주현미 20TH"},{"title":"길","lyric":"수많은사람들스치며지나가고","year":2020,"month":9,"day":25,"album":"주현미 20TH"},{"title":"금동아은동아","lyric":"비바람에흔들린다고꽃이","year":2020,"month":10,"day":30,"album":"주현미 20TH"},{"title":"바람이되어","lyric":"사랑도미움도아무것도내겐","year":2020,"month":10,"day":30,"album":"주현미 20TH"},{"title":"그여자그남자","lyric":"사랑흔한그한마디가왜나를두드리나","year":2020,"month":11,"day":27,"album":"주현미 20TH"},{"title":"천일홍","lyric":"창문너머로햇살가득비추면살며시그대가올까요","year":2020,"month":11,"day":27,"album":"주현미 20TH"},{"title":"WINDS FROM CUBA","lyric":"바람이내게와그날밤그깊고푸른밤처럼날데려가네","year":2021,"month":6,"day":11,"album":"주현미 재즈프로젝트"},{"title":"흐린 비","lyric":"","year":2021,"month":8,"day":20,"album":"주현미 재즈 프로젝트"},{"title":"미시령(그여자)","lyric":"미시령그리운옛길따라저녁노을밟으며","year":2022,"month":3,"day":20,"album":"주현미 재즈 프로젝트"},{"title":"윤중로연가","lyric":"흐드러진벚꽃바람에","year":2022,"month":3,"day":31,"album":"주현미 재즈 프로젝트"},{"title":"오늘이그래요","lyric":"사람들은 누구나 열심히 살면서도","year":2024,"month":11,"day":3,"album":"40주년 기념"},{"title":"안오네","lyric":"안오네내님이아직안오네","year":2025,"month":5,"day":15,"album":"안오네"},{"title":"연정","lyric":"붙잡아도그래도가시렵니까","year":2025,"month":9,"day":15,"album":"소회"},{"title":"오로지","lyric":"미안하단말은말아요한숨도그만거두어요","year":2025,"month":9,"day":15,"album":"소회"},{"title":"이정표","lyric":"그대사랑안에서길을잃고말았죠","year":2025,"month":9,"day":15,"album":"소회"}];
 
 /* TODAY 우선순위 로직 */
+
+async function loadTodayVideo(title) {
+  const area = document.getElementById('today-embed-area');
+  if (!area) return;
+  area.innerHTML = '<div class="today-embed-loading">영상 불러오는 중...</div>';
+  try {
+    const q = encodeURIComponent('주현미 ' + title);
+    const r = await fetch('/api/today-video?q=' + q);
+    if (!r.ok) throw new Error();
+    const d = await r.json();
+    if (!d.id) throw new Error();
+    area.innerHTML =
+      '<div class="video-frame"><iframe src="https://www.youtube.com/embed/' + d.id +
+      '?rel=0&modestbranding=1" allowfullscreen loading="lazy" ' +
+      'allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture">' +
+      '</iframe></div>';
+  } catch (e) {
+    area.innerHTML = '';
+  }
+}
+
 function initToday() {
   const now = new Date(), tm = now.getMonth() + 1, td = now.getDate();
   const valid = SONGS.filter(s => s.month && s.day);
@@ -295,8 +320,8 @@ function initToday() {
     const d = dist(s);
     if (d < minD) { minD = d; closest = s; }
     const exact = s.month === tm && s.day === td;
-    if      (exact        && prio < 3) { pick = s; prio = 3; }
-    else if (d <= 7       && prio < 2) { pick = s; prio = 2; }
+    if      (exact          && prio < 3) { pick = s; prio = 3; }
+    else if (d <= 7         && prio < 2) { pick = s; prio = 2; }
     else if (s.month === tm && prio < 1) { pick = s; prio = 1; }
   }
   if (!pick) { pick = closest; prio = 0; }
@@ -306,25 +331,20 @@ function initToday() {
   const dd  = String(pick.day).padStart(2,'0');
   const labels = { 3:'★ 오늘 날짜 일치', 2:'이번 주 (7일 이내)', 1:'이번 달', 0:'가장 가까운 날짜' };
   const cls    = { 3:'p1', 2:'p2', 1:'p3', 0:'p3' };
+  const ytQ    = encodeURIComponent('주현미 ' + pick.title);
 
-  const ytQ = encodeURIComponent('주현미 ' + pick.title);
+  let html = '<span class="p-badge ' + cls[prio] + '">' + labels[prio] + '</span>';
+  html += '<div class="today-song">〈' + pick.title + '〉</div>';
+  html += '<div class="today-info">발매일 ' + pick.year + '.' + mm + '.' + dd + ' &nbsp;/&nbsp; ' + ago + '년 전</div>';
+  if (pick.lyric) html += '<div class="today-lyric">❝ ' + pick.lyric + ' ❞</div>';
+  if (pick.album) html += '<div class="today-album">📀 ' + pick.album + '</div>';
+  html += '<div class="link-row" style="margin-bottom:14px">';
+  html += '<a class="mlink" href="https://www.youtube.com/results?search_query=' + ytQ + '" target="_blank">▶ YouTube에서 검색</a>';
+  html += '</div>';
+  html += '<div id="today-embed-area" class="today-embed-area"></div>';
 
-  document.getElementById('today-out').innerHTML = `
-    <span class="p-badge ${cls[prio]}">${labels[prio]}</span>
-    <div class="today-song">〈${pick.title}〉</div>
-    <div class="today-info">발매일 ${pick.year}.${mm}.${dd} &nbsp;/&nbsp; ${ago}년 전</div>
-    ${pick.lyric ? `<div class="today-lyric">❝ ${pick.lyric} ❞</div>` : ''}
-    ${pick.album ? `<div class="today-album">📀 ${pick.album}</div>` : ''}
-    <div class="link-row" style="margin-bottom:14px">
-      <a class="mlink" href="https://www.youtube.com/results?search_query=${ytQ}" target="_blank">▶ YouTube에서 검색</a>
-    </div>
-    <div class="video-frame" style="margin-top:0">
-      <iframe
-        src="https://www.youtube.com/embed?listType=search&list=${ytQ}&index=0&rel=0&modestbranding=1"
-        allowfullscreen loading="lazy"
-        allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture">
-      </iframe>
-    </div>`;
+  document.getElementById('today-out').innerHTML = html;
+  loadTodayVideo(pick.title);
 }
 
 /* TIMELINE */
