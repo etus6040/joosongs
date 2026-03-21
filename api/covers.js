@@ -8,16 +8,18 @@
  * 반환: [{ id, title }, ...]
  *
  * 동작:
- *  1. @jootv.official 핸들 → 채널 ID 자동 변환
- *  2. 페이지네이션으로 최대 500개 영상 수집
- *  3. 제목이 "주현미 -" 또는 "주현미-"로 시작하는 것만 필터
+ *  1. 채널 ID로 직접 검색 (forHandle API는 일부 프로젝트에서 차단됨)
+ *  2. nextPageToken 페이지네이션으로 최대 500개 수집 (10페이지 × 50개)
+ *  3. 제목이 "주현미 -" / "주현미-" 패턴인 것만 필터
  *  4. 6시간 캐시
  */
 
-const HANDLE = 'jootv.official';          // @ 없이
-const TARGET = 500;                        // 수집할 최대 영상 수
-const PAGE_SIZE = 50;                      // 한 번에 가져올 수 (API 최대값)
-const CACHE_SEC = 60 * 60 * 6;            // 6시간
+// 주현미 TV 공식 채널 ID (@jootv.official)
+// 출처: playboard.co/en/channel/UCEDXalKckJ-JqVCjusmHm3g
+const CHANNEL_ID = 'UCEDXalKckJ-JqVCjusmHm3g';
+const PAGE_SIZE  = 50;           // YouTube API 최대값
+const MAX_PAGES  = 10;           // 10 × 50 = 500개 상한
+const CACHE_SEC  = 60 * 60 * 6; // 6시간 Vercel Edge 캐시
 
 export default async function handler(req, res) {
   res.setHeader('Access-Control-Allow-Origin', '*');
@@ -29,62 +31,41 @@ export default async function handler(req, res) {
   }
 
   try {
-    // ── STEP 1: 핸들 → 채널 ID 변환 ───────────────────────────────
-    const chUrl = new URL('https://www.googleapis.com/youtube/v3/channels');
-    chUrl.searchParams.set('key', apiKey);
-    chUrl.searchParams.set('forHandle', HANDLE);
-    chUrl.searchParams.set('part', 'id');
-
-    const chRes = await fetch(chUrl.toString());
-    const chData = await chRes.json();
-
-    if (!chRes.ok || !chData.items?.length) {
-      const msg = chData.error?.message || '채널을 찾을 수 없습니다.';
-      return res.status(502).json({ error: `채널 조회 실패: ${msg}` });
-    }
-
-    const channelId = chData.items[0].id;
-
-    // ── STEP 2: 채널 영상 페이지네이션으로 최대 500개 수집 ──────────
-    let allItems = [];
+    let allItems  = [];
     let pageToken = undefined;
-    const pages = Math.ceil(TARGET / PAGE_SIZE); // 최대 10페이지
 
-    for (let i = 0; i < pages; i++) {
-      const searchUrl = new URL('https://www.googleapis.com/youtube/v3/search');
-      searchUrl.searchParams.set('key', apiKey);
-      searchUrl.searchParams.set('channelId', channelId);
-      searchUrl.searchParams.set('part', 'snippet');
-      searchUrl.searchParams.set('type', 'video');
-      searchUrl.searchParams.set('maxResults', PAGE_SIZE);
-      searchUrl.searchParams.set('order', 'date');
-      if (pageToken) searchUrl.searchParams.set('pageToken', pageToken);
+    for (let i = 0; i < MAX_PAGES; i++) {
+      const url = new URL('https://www.googleapis.com/youtube/v3/search');
+      url.searchParams.set('key',       apiKey);
+      url.searchParams.set('channelId', CHANNEL_ID);
+      url.searchParams.set('part',      'snippet');
+      url.searchParams.set('type',      'video');
+      url.searchParams.set('maxResults', PAGE_SIZE);
+      url.searchParams.set('order',     'date');
+      if (pageToken) url.searchParams.set('pageToken', pageToken);
 
-      const pageRes = await fetch(searchUrl.toString());
+      const pageRes  = await fetch(url.toString());
       const pageData = await pageRes.json();
 
       if (!pageRes.ok) {
-        // 할당량 초과 등 중간 실패 시 지금까지 수집한 것만 반환
+        // 중간 실패(할당량 초과 등) — 지금까지 모은 것으로 응답
         console.warn(`페이지 ${i + 1} 실패:`, pageData.error?.message);
         break;
       }
 
-      allItems = allItems.concat(pageData.items || []);
+      allItems  = allItems.concat(pageData.items || []);
       pageToken = pageData.nextPageToken;
-
-      // 다음 페이지 없으면 중단
-      if (!pageToken) break;
+      if (!pageToken) break; // 마지막 페이지
     }
 
-    // ── STEP 3: "주현미 -" 패턴 필터 ─────────────────────────────
+    // "주현미 -" 또는 "주현미-" 제목 필터
     const covers = allItems
-      .filter(item => /주현미\s*[-—]/.test(item.snippet?.title || ''))
-      .map(item => ({
-        id: item.id.videoId,
-        title: item.snippet.title,
+      .filter(v => /주현미\s*[-—]/.test(v.snippet?.title || ''))
+      .map(v => ({
+        id:    v.id.videoId,
+        title: v.snippet.title,
       }));
 
-    // ── STEP 4: 6시간 캐시 후 반환 ───────────────────────────────
     res.setHeader('Cache-Control', `public, s-maxage=${CACHE_SEC}, stale-while-revalidate=3600`);
     return res.status(200).json(covers);
 
