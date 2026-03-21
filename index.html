@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>주현미 연대기 — 트로트의 여왕</title>
+<meta property="og:title" content="주현미 연대기 — 트로트의 여왕">
+<meta property="og:description" content="1984년부터 2025년까지, 주현미 40년 음악 연대기">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@300;400;500&family=Noto+Sans+KR:wght@300;400&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#f9f7f3;--bg2:#f1ede5;--bg3:#e8e3d9;
+  --tx:#1c1a16;--tx2:#52504a;--tx3:#9a9690;
+  --bd:#dedad2;--bd2:#eae6de;
+  --acc:#7a3b10;--line:#c8a882;
+}
+@media(prefers-color-scheme:dark){:root{
+  --bg:#17150f;--bg2:#1f1d16;--bg3:#2a271e;
+  --tx:#ede9e0;--tx2:#a8a49a;--tx3:#636058;
+  --bd:#3a362c;--bd2:#2a271e;
+  --acc:#c8844a;--line:#8a6a48;
+}}
+html,body{background:var(--bg);color:var(--tx);font-family:'Noto Serif KR',serif;font-weight:400;min-height:100vh;font-size:14px;line-height:1.7}
+#app{max-width:860px;margin:0 auto;padding-bottom:80px}
+
+/* ── HERO ── */
+.hero{text-align:center;padding:44px 24px 32px;border-bottom:1px solid var(--bd)}
+.hero-badge{font-size:9px;letter-spacing:.28em;color:var(--tx3);text-transform:uppercase;display:inline-block;border:.5px solid var(--bd);padding:3px 14px;margin-bottom:18px;font-family:'Noto Sans KR',sans-serif;font-weight:300}
+.hero h1{font-size:clamp(30px,6.5vw,52px);font-weight:300;letter-spacing:.04em;color:var(--tx);line-height:1.1}
+.hero-romanized{font-size:11px;color:var(--tx3);letter-spacing:.14em;margin-top:8px;font-family:'Noto Sans KR',sans-serif;font-weight:300}
+.hero-meta{margin-top:14px;font-size:11px;color:var(--tx3)}
+.deco{display:flex;align-items:center;justify-content:center;gap:10px;margin:16px 0 0}
+.deco hr{border:none;border-top:.5px solid var(--bd);width:60px}
+.deco-dot{width:3px;height:3px;border-radius:50%;background:var(--tx3);opacity:.45}
+
+/* ── SECTION ── */
+.sec{padding:28px 28px 24px;border-bottom:1px solid var(--bd)}
+.sec.alt{background:var(--bg2)}
+.sec-title{font-size:9px;letter-spacing:.22em;color:var(--tx3);text-transform:uppercase;font-family:'Noto Sans KR',sans-serif;font-weight:300;margin-bottom:20px;display:flex;align-items:center;gap:10px}
+.sec-title::after{content:'';flex:1;border-top:.5px solid var(--bd)}
+
+/* ── TODAY ── */
+.p-badge{display:inline-block;font-size:9px;letter-spacing:.14em;padding:2px 9px;margin-bottom:12px;font-family:'Noto Sans KR',sans-serif;font-weight:400}
+.p1{background:var(--acc);color:#fff}
+.p2{border:.5px solid var(--bd);color:var(--tx2)}
+.p3{border:.5px solid var(--bd2);color:var(--tx3)}
+.today-song{font-size:clamp(22px,4.5vw,32px);font-weight:300;color:var(--tx);margin-bottom:5px}
+.today-info{font-size:11px;color:var(--tx3);margin-bottom:14px;line-height:1.8}
+.today-lyric{font-size:13px;color:var(--tx2);font-style:italic;line-height:1.85;border-left:1.5px solid var(--bd);padding-left:14px;margin-bottom:12px}
+.today-album{font-size:11px;color:var(--tx3);margin-bottom:14px;font-family:'Noto Sans KR',sans-serif;font-weight:300}
+.link-row{display:flex;gap:8px;flex-wrap:wrap}
+.mlink{font-size:11px;color:var(--tx2);border:.5px solid var(--bd);padding:5px 13px;text-decoration:none;font-family:'Noto Sans KR',sans-serif;font-weight:400;transition:border-color .15s,color .15s}
+.mlink:hover{border-color:var(--acc);color:var(--acc)}
+
+/* ── COVER VIDEO ── */
+.cover-wrap{border-top:.5px solid var(--bd2);margin-top:24px;padding-top:22px}
+.cover-label{font-size:9px;letter-spacing:.2em;color:var(--tx3);text-transform:uppercase;font-family:'Noto Sans KR',sans-serif;font-weight:300;margin-bottom:14px}
+.video-frame{position:relative;width:100%;padding-bottom:56.25%;background:var(--bg3)}
+.video-frame iframe{position:absolute;inset:0;width:100%;height:100%;border:none}
+.video-skeleton{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:12px;color:var(--tx3);font-family:'Noto Sans KR',sans-serif;font-weight:300}
+.video-meta{margin-top:10px;font-size:12px;color:var(--tx2);font-family:'Noto Sans KR',sans-serif;font-weight:300;line-height:1.5;min-height:18px}
+.cover-footer{display:flex;align-items:center;gap:12px;margin-top:10px}
+.cover-btn{font-size:11px;background:none;border:.5px solid var(--bd);color:var(--tx3);padding:5px 14px;cursor:pointer;font-family:'Noto Sans KR',sans-serif;font-weight:300;transition:all .15s}
+.cover-btn:hover{border-color:var(--acc);color:var(--acc)}
+.cover-info{font-size:10px;color:var(--tx3);font-family:'Noto Sans KR',sans-serif}
+.cover-err{font-size:11px;color:var(--tx3);font-style:italic;padding:10px 0}
+
+/* ── SEARCH + FILTER ── */
+.search-wrap{padding:16px 28px 0}
+.search-input{width:100%;padding:8px 14px;font-size:13px;font-family:'Noto Serif KR',serif;font-weight:400;border:.5px solid var(--bd);background:var(--bg);color:var(--tx);outline:none;transition:border-color .15s}
+.search-input::placeholder{color:var(--tx3)}
+.search-input:focus{border-color:var(--line)}
+.filter-bar{display:flex;overflow-x:auto;border-bottom:.5px solid var(--bd);padding:0 28px;margin-top:4px}
+.fbtn{background:none;border:none;border-bottom:1.5px solid transparent;padding:10px 13px;font-size:11px;color:var(--tx3);cursor:pointer;font-family:'Noto Sans KR',sans-serif;font-weight:400;white-space:nowrap;margin-bottom:-1px;transition:color .15s}
+.fbtn:hover{color:var(--tx2)}
+.fbtn.on{color:var(--tx);border-bottom-color:var(--acc);font-weight:500}
+
+/* ── TIMELINE ── */
+.timeline{padding:0 28px}
+.era-group{padding:26px 0 0}
+.era-label{font-size:9px;letter-spacing:.22em;color:var(--tx3);text-transform:uppercase;font-family:'Noto Sans KR',sans-serif;font-weight:300;margin-bottom:16px;display:flex;align-items:center;gap:10px}
+.era-label::after{content:'';flex:1;border-top:.5px solid var(--bd2)}
+.tl-item{display:grid;grid-template-columns:64px 1px 1fr;gap:0 16px;cursor:pointer;padding:2px 0;border-radius:2px;transition:background .12s}
+.tl-item:hover{background:var(--bg2)}
+.item-yr{font-size:20px;font-weight:300;color:var(--tx);opacity:.13;text-align:right;padding-top:5px;line-height:1;align-self:start;transition:opacity .2s;font-family:'Noto Sans KR',sans-serif}
+.tl-item:hover .item-yr,.tl-item.open .item-yr{opacity:.45}
+.item-spine{display:flex;flex-direction:column;align-items:center}
+.spine-dot{width:6px;height:6px;border-radius:50%;border:1px solid var(--bd);background:var(--bg);flex-shrink:0;margin-top:10px;transition:all .2s}
+.tl-item:hover .spine-dot,.tl-item.open .spine-dot{border-color:var(--acc);background:var(--acc)}
+.spine-line{width:.5px;flex:1;background:var(--bd2);min-height:30px}
+.item-body{padding:4px 0 18px}
+.item-tag{font-size:8.5px;letter-spacing:.12em;color:var(--tx3);border:.5px solid var(--bd2);padding:1.5px 6px;text-transform:uppercase;font-family:'Noto Sans KR',sans-serif;font-weight:300;margin-bottom:5px;display:inline-block}
+.item-tag.hit{border-color:var(--acc);color:var(--acc)}
+.item-tag.award{border-color:var(--line);color:var(--tx2)}
+.item-title{font-size:15px;font-weight:300;color:var(--tx);line-height:1.25;margin-bottom:2px}
+.item-sub{font-size:10.5px;color:var(--tx3);font-weight:400}
+.item-detail{max-height:0;overflow:hidden;transition:max-height .35s ease}
+.tl-item.open .item-detail{max-height:400px}
+.detail-in{padding-top:10px;padding-bottom:4px}
+.detail-desc{font-size:12.5px;color:var(--tx2);font-weight:400;line-height:1.9;border-left:1px solid var(--bd2);padding-left:12px;margin-bottom:10px}
+.detail-links{display:flex;gap:7px;flex-wrap:wrap}
+
+/* ── GUESTBOOK ── */
+.gb-form{display:flex;flex-direction:column;gap:9px;margin-bottom:22px}
+.gb-row{display:flex;gap:9px}
+.gb-input,.gb-sel,.gb-ta{font-family:'Noto Serif KR',serif;font-weight:400;font-size:13px;border:.5px solid var(--bd);background:var(--bg);color:var(--tx);padding:7px 13px;outline:none;transition:border-color .15s;width:100%}
+.gb-input:focus,.gb-sel:focus,.gb-ta:focus{border-color:var(--line)}
+.gb-input::placeholder,.gb-ta::placeholder{color:var(--tx3)}
+.gb-input{flex:1;min-width:0}
+.gb-sel{flex:1;min-width:0;cursor:pointer}
+.gb-ta{resize:vertical;min-height:68px}
+.gb-btn{align-self:flex-end;padding:7px 20px;font-size:11px;font-family:'Noto Sans KR',sans-serif;font-weight:400;background:none;border:.5px solid var(--bd);color:var(--tx2);cursor:pointer;letter-spacing:.04em;transition:all .15s}
+.gb-btn:hover{border-color:var(--acc);color:var(--acc)}
+.gb-list{display:flex;flex-direction:column;gap:14px}
+.gb-entry{border-left:1px solid var(--bd2);padding:7px 0 7px 14px}
+.gb-head{display:flex;gap:10px;align-items:baseline;flex-wrap:wrap;margin-bottom:4px}
+.gb-name{font-size:13px;font-weight:500;color:var(--tx)}
+.gb-song{font-size:10px;color:var(--acc);border:.5px solid var(--bd2);padding:1px 7px}
+.gb-date{font-size:9.5px;color:var(--tx3);margin-left:auto}
+.gb-msg{font-size:12.5px;color:var(--tx2);font-weight:400;line-height:1.8;font-style:italic}
+.gb-empty{font-size:12px;color:var(--tx3);font-style:italic;text-align:center;padding:18px 0}
+
+@media(max-width:520px){
+  .sec,.timeline,.filter-bar,.search-wrap{padding-left:14px;padding-right:14px}
+  .gb-row{flex-direction:column}
+}
+</style>
+</head>
+<body>
+<div id="app">
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-badge">트로트의 여왕 · 연대기 아카이브</div>
+  <h1>주현미</h1>
+  <div class="hero-romanized">周炫美 · Joo Hyun-Mi</div>
+  <div class="deco"><hr><div class="deco-dot"></div><div class="deco-dot"></div><div class="deco-dot"></div><hr></div>
+  <div class="hero-meta">음력 1961년 9월 27일 (양력 1961년 11월 5일) 생 &nbsp;·&nbsp; 데뷔 1985년 &nbsp;·&nbsp; 정규 20집 &nbsp;·&nbsp; 2025년 데뷔 40주년</div>
+</div>
+
+<!-- TODAY + COVER -->
+<div class="sec">
+  <div class="sec-title">n년 전 오늘의 노래</div>
+  <div id="today-out"></div>
+
+  <div class="cover-wrap">
+    <div class="cover-label">오늘의 커버곡 — JooTV</div>
+    <div class="video-frame">
+      <div class="video-skeleton" id="cover-skeleton">영상 불러오는 중...</div>
+      <iframe id="cover-iframe" src="" allowfullscreen loading="lazy"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        style="opacity:0;transition:opacity .3s">
+      </iframe>
+    </div>
+    <div class="video-meta" id="cover-title"></div>
+    <div class="cover-footer">
+      <button class="cover-btn" id="cover-next-btn" onclick="nextCover()" disabled>↻ 다른 영상</button>
+      <span class="cover-info" id="cover-info"></span>
+    </div>
+    <div class="cover-err" id="cover-err"></div>
+  </div>
+</div>
+
+<!-- SEARCH + FILTER -->
+<div class="search-wrap">
+  <input class="search-input" id="sq" placeholder="앨범, 연도, 키워드 검색…" oninput="renderTL()">
+</div>
+<div class="filter-bar">
+  <button class="fbtn on" onclick="setF('all',this)">전체</button>
+  <button class="fbtn" onclick="setF('album',this)">앨범</button>
+  <button class="fbtn" onclick="setF('hit',this)">대표곡</button>
+  <button class="fbtn" onclick="setF('award',this)">수상/기록</button>
+  <button class="fbtn" onclick="setF('1980s',this)">1980s</button>
+  <button class="fbtn" onclick="setF('1990s',this)">1990s</button>
+  <button class="fbtn" onclick="setF('2000s',this)">2000s+</button>
+</div>
+
+<div class="timeline" id="tl"></div>
+
+<!-- GUESTBOOK -->
+<div class="sec" style="border-top:.5px solid var(--bd)">
+  <div class="sec-title">팬 방명록</div>
+  <div class="gb-form">
+    <div class="gb-row">
+      <input class="gb-input" id="gb-name" placeholder="닉네임" maxlength="20">
+      <select class="gb-sel" id="gb-song">
+        <option value="">— 좋아하는 노래 —</option>
+        <option>비내리는 영동교</option><option>눈물의 블루스</option>
+        <option>신사동 그 사람</option><option>짝사랑</option><option>잠깐만</option>
+        <option>추억으로 가는 당신</option><option>또 만났네요</option>
+        <option>울면서 후회하네</option><option>쌍쌍파티</option>
+        <option>사랑한다</option><option>짜라자짜</option>
+        <option>여인의 눈물</option><option>러브레터</option>
+      </select>
+    </div>
+    <textarea class="gb-ta" id="gb-msg" placeholder="선생님 노래에 얽힌 추억을 남겨주세요 ✦" maxlength="200"></textarea>
+    <button class="gb-btn" onclick="gbSubmit()">✦ 방명록 남기기</button>
+  </div>
+  <div class="gb-list" id="gb-list"></div>
+</div>
+
+</div><!-- /app -->
+
+<script>
+/* ═══════════════════════════════════════════════════════
+   COVER VIDEO — /api/covers 에서 목록 가져옴
+   날짜 시드: 매일 다른 영상, 같은 날 새로고침은 동일 영상
+═══════════════════════════════════════════════════════ */
+let covers = [], coverIdx = 0;
+
+function dateSeed() {
+  const d = new Date();
+  return d.getFullYear() * 10000 + (d.getMonth() + 1) * 100 + d.getDate();
+}
+function seededIdx(seed, n) {
+  const x = Math.sin(seed + 1) * 9999;
+  return Math.floor((x - Math.floor(x)) * n);
+}
+
+async function loadCovers() {
+  try {
+    const res = await fetch('/api/covers');
+    if (!res.ok) throw new Error(`서버 오류 ${res.status}`);
+    covers = await res.json();
+    if (!Array.isArray(covers) || covers.length === 0) throw new Error('영상 목록이 비어 있습니다.');
+
+    coverIdx = seededIdx(dateSeed(), covers.length);
+    showCover(coverIdx);
+    document.getElementById('cover-next-btn').disabled = false;
+  } catch (e) {
+    document.getElementById('cover-skeleton').textContent = '';
+    document.getElementById('cover-err').textContent = '영상을 불러오지 못했습니다 — ' + e.message;
+  }
+}
+
+function showCover(idx) {
+  const v = covers[idx];
+  const iframe = document.getElementById('cover-iframe');
+  document.getElementById('cover-skeleton').style.display = 'none';
+  iframe.src = `https://www.youtube.com/embed/${v.id}?rel=0&modestbranding=1`;
+  iframe.style.opacity = '1';
+  document.getElementById('cover-title').textContent = v.title;
+  document.getElementById('cover-info').textContent = `${idx + 1} / ${covers.length}`;
+}
+
+function nextCover() {
+  coverIdx = (coverIdx + 1) % covers.length;
+  showCover(coverIdx);
+}
+
+loadCovers();
+
+/* ═══════════════════════════════════════════════════════
+   SONG DATABASE — 236곡 (엑셀 원본)
+═══════════════════════════════════════════════════════ */
+const SONGS=[{"title":"우야화","lyric":"","year":1987,"month":6,"day":30,"album":"지난 어느 날/고향 못잊어"},{"title":"가지마오가지마오","lyric":"사랑하기에울고있어요돌아","year":1963,"month":1,"day":1,"album":""},{"title":"탄금대사연","lyric":"탄금정구비돌아","year":1968,"month":10,"day":15,"album":"주현미4집탄금대사연"},{"title":"때늦은후회지만","lyric":"","year":1970,"month":8,"day":7,"album":""},{"title":"인생역","lyric":"어디서왔다가어디로","year":1975,"month":11,"day":20,"album":""},{"title":"어제와오늘","lyric":"어제를떠나온희미한","year":1976,"month":9,"day":6,"album":""},{"title":"풀피리","lyric":"어디서불고있나","year":1976,"month":9,"day":6,"album":""},{"title":"해남아가씨","lyric":"","year":1977,"month":12,"day":1,"album":""},{"title":"영동부르스","lyric":"","year":1984,"month":4,"day":15,"album":""},{"title":"망향가","lyric":"","year":1985,"month":2,"day":1,"album":"주현미-이별의항구"},{"title":"이별의항구","lyric":"당신의눈물도실어주세요아픔도실","year":1985,"month":2,"day":1,"album":"주현미-이별의항구"},{"title":"풀잎에맺힌이슬","lyric":"","year":1985,"month":2,"day":4,"album":""},{"title":"애정","lyric":"","year":1985,"month":3,"day":1,"album":"주현미 2집 - 님아 가지말아요"},{"title":"옹달샘","lyric":"","year":1985,"month":3,"day":1,"album":"주현미 2집 - 님아 가지말아요"},{"title":"타인의정","lyric":"","year":1985,"month":3,"day":1,"album":"주현미 2집 - 님아 가지말아요"},{"title":"그정을어이해요","lyric":"정주고가면안돼요나를두고","year":1985,"month":3,"day":11,"album":"주현미 1집"},{"title":"모국의팔월한가위","lyric":"지금도눈을감으면생각이나","year":1985,"month":3,"day":11,"album":"주현미 1집"},{"title":"미련의블루스","lyric":"","year":1985,"month":3,"day":11,"album":"주현미 1집"},{"title":"지울수없는정","lyric":"사랑이무엇이길래정이무엇","year":1985,"month":3,"day":11,"album":"주현미 1집"},{"title":"내고향인천항","lyric":"그리운내고향","year":1985,"month":5,"day":1,"album":""},{"title":"월악산","lyric":"월악산난간머리희미한","year":1985,"month":5,"day":20,"album":"충청북도청풍명월노래모음"},{"title":"월미도를아시나요","lyric":"","year":1985,"month":6,"day":1,"album":""},{"title":"님아가지말아요","lyric":"","year":1985,"month":6,"day":1,"album":"주현미 2집 - 님아 가지말아요"},{"title":"가을밤외기러기","lyric":"","year":1985,"month":8,"day":30,"album":""},{"title":"고향의품에","lyric":"물방아돌아가고","year":1985,"month":10,"day":1,"album":""},{"title":"무교동연인들","lyric":"오색등네온불이꽃을피우면","year":1985,"month":10,"day":1,"album":"주현미힛트곡모음집"},{"title":"그정때문에","lyric":"잊고살자다짐해도","year":1985,"month":10,"day":20,"album":""},{"title":"돌아와주세요","lyric":"그대나늘진정사랑","year":1985,"month":10,"day":20,"album":"주현미 4집"},{"title":"때로는그리움이","lyric":"얼굴은잊는다해도","year":1985,"month":10,"day":20,"album":"주현미힛트곡모음집"},{"title":"쓸쓸한계절","lyric":"낙엽은떨어져서","year":1985,"month":10,"day":20,"album":"주현미힛트곡모음집"},{"title":"잊어야지","lyric":"잊어야지잊어야지","year":1985,"month":10,"day":20,"album":"주현미힛트곡모음집"},{"title":"명동야곡","lyric":"네온이춤을추는명동의밤거리그님","year":1985,"month":11,"day":1,"album":"주현미-울면서후회하네"},{"title":"바보인가봐","lyric":"사랑이무엇인지행복이무엇","year":1985,"month":11,"day":1,"album":"주현미-울면서후회하네"},{"title":"울면서후회하네","lyric":"순정을다바쳐서믿었던그사람","year":1985,"month":11,"day":1,"album":"주현미-울면서후회하네"},{"title":"태평무","lyric":"","year":1986,"month":4,"day":18,"album":""},{"title":"그냥가세요","lyric":"","year":1986,"month":7,"day":19,"album":""},{"title":"첫정","lyric":"잊어야하기에가슴은아파도","year":1986,"month":8,"day":1,"album":""},{"title":"이태원연가","lyric":"밤깊은이태원불빛속에서젖어버린","year":1986,"month":9,"day":1,"album":""},{"title":"눈물의블루스","lyric":"오색등네온불이속삭이듯나","year":1986,"month":10,"day":1,"album":"주현미-내가왜웁니까"},{"title":"내가왜웁니까","lyric":"울지않아요내가왜웁니까내","year":1986,"month":10,"day":20,"album":"주현미-내가왜웁니까"},{"title":"다시보고또보고","lyric":"서로가미워하지않으면서도","year":1986,"month":10,"day":20,"album":"주현미 2집"},{"title":"사랑은하지않으리","lyric":"사랑이눈물이라면하지말것","year":1986,"month":11,"day":1,"album":""},{"title":"외로운밤","lyric":"그님은가고세월은흘러도당","year":1987,"month":1,"day":1,"album":""},{"title":"사랑이여다시한번","lyric":"사랑했던너와난","year":1987,"month":10,"day":29,"album":""},{"title":"동성로의밤","lyric":"","year":1988,"month":2,"day":3,"album":""},{"title":"비내리는밤의부루스","lyric":"비가오고있어요어둠이깔리","year":1988,"month":2,"day":3,"album":""},{"title":"비에젖은터미널","lyric":"밤비가하염없이내리는비에젖은터","year":1988,"month":3,"day":11,"album":""},{"title":"신사동그사람","lyric":"희미한불빛사이로마주치그눈길","year":1988,"month":3,"day":11,"album":"주현미-신사동그사람"},{"title":"흔들리는갈대","lyric":"","year":1988,"month":3,"day":11,"album":"주현미-신사동그사람"},{"title":"비내리는영동교","lyric":"밤비내리는영동교를","year":1988,"month":12,"day":1,"album":"주현미 1집 - 비내리는 영동교"},{"title":"등대섬의추억","lyric":"가슴은아파도헤어져야하","year":1989,"month":2,"day":15,"album":""},{"title":"짝사랑","lyric":"마주치는눈빛이무엇을","year":1989,"month":2,"day":15,"album":"89 주현미"},{"title":"추억속에서","lyric":"그리움을엮어서","year":1989,"month":2,"day":15,"album":"89 주현미"},{"title":"상해의밤","lyric":"춤을추는은빛물결","year":1989,"month":3,"day":10,"album":""},{"title":"빗물이야","lyric":"아무리이마음이아프다해도","year":1989,"month":5,"day":1,"album":""},{"title":"나만을사랑해줘요","lyric":"철없는여자라고","year":1990,"month":1,"day":1,"album":""},{"title":"단심","lyric":"유리창에흘러내린","year":1990,"month":5,"day":1,"album":""},{"title":"사할린","lyric":"눈물조차얼어붙은","year":1990,"month":5,"day":1,"album":""},{"title":"스무살때어느날","lyric":"찬바람만스쳐도가슴은","year":1990,"month":5,"day":1,"album":""},{"title":"잠깐만","lyric":"잠깐만잠깐만그발길을","year":1990,"month":5,"day":1,"album":"주현미 10집"},{"title":"재회","lyric":"그대가슴에나이렇게","year":1990,"month":5,"day":1,"album":""},{"title":"천호동의밤","lyric":"차한잔을들때마다","year":1990,"month":5,"day":1,"album":""},{"title":"체념","lyric":"왜그래가는사람을","year":1990,"month":5,"day":1,"album":""},{"title":"커피부르스","lyric":"가로등불빛슬쓸한","year":1990,"month":5,"day":1,"album":""},{"title":"힘없이고한이별","lyric":"울긴요누가울어요","year":1990,"month":5,"day":1,"album":""},{"title":"추억으로가는당신","lyric":"나는알아요당신이나를","year":1991,"month":8,"day":1,"album":"주현미 11집"},{"title":"눈물의마지막밤","lyric":"난이제알아요당신을떠나야","year":1992,"month":4,"day":1,"album":""},{"title":"이별이흔한거리","lyric":"네온사인깜빡이는하얀불빛","year":1992,"month":4,"day":1,"album":""},{"title":"당신은바보야","lyric":"내귓가에속삭이며","year":1992,"month":4,"day":30,"album":""},{"title":"또만났네요","lyric":"또만났네또만났어","year":1992,"month":4,"day":30,"album":"주현미 12집"},{"title":"외로운시간표","lyric":"밤비가하염없이쏟아지는밤네온빛","year":1992,"month":6,"day":10,"album":""},{"title":"장미거리","lyric":"또밤이오는가요꿈을꾸는","year":1993,"month":8,"day":1,"album":"93 주현미"},{"title":"정으로사는세상","lyric":"세상에흔한것이여자의","year":1993,"month":8,"day":1,"album":"93 주현미"},{"title":"청춘","lyric":"세월아가지를마라","year":1995,"month":1,"day":1,"album":""},{"title":"인생유정","lyric":"저강물흘러흘러어디로가나정처없","year":1996,"month":1,"day":1,"album":"인생유정"},{"title":"대왕의길","lyric":"화산가는길은걸음마다슬픔이러냐","year":1998,"month":4,"day":15,"album":""},{"title":"내가슴의화양강","lyric":"그때나지금이나화양강은흐르건만","year":1999,"month":11,"day":1,"album":""},{"title":"홍천으로오세요","lyric":"여기는홍천강원도홍천산이있고","year":1999,"month":11,"day":1,"album":"홍천으로 오세요"},{"title":"차한잔어때요","lyric":"저달을보면서별이라해도","year":2000,"month":6,"day":22,"album":"러브레터"},{"title":"러브레터","lyric":"구름에달빛가린캄캄한밤에나홀로","year":2000,"month":8,"day":1,"album":"러브레터"},{"title":"없었던일로해요","lyric":"없었던일로해요없었던일로","year":2000,"month":8,"day":3,"album":"러브레터"},{"title":"마라도","lyric":"밤비마저스산스럽다모슬포부두","year":2003,"month":1,"day":1,"album":"러브레터"},{"title":"정말좋았네","lyric":"사랑그사랑이정말좋았네","year":2003,"month":5,"day":1,"album":"정말 좋았네"},{"title":"사랑이무량하오","lyric":"바람에몸맡기고꽃잎날리오","year":2006,"month":4,"day":1,"album":"주현미 17집 - 어허라 사랑"},{"title":"어허라사랑","lyric":"어라어허라사랑이오네","year":2006,"month":4,"day":1,"album":"주현미 17집 - 어허라 사랑"},{"title":"달아달아","lyric":"한잔술따르리다","year":2006,"month":8,"day":11,"album":"주현미 17집 - 어허라 사랑"},{"title":"짜라자짜","lyric":"사랑이좋아보여서그대가좋아보여","year":2009,"month":2,"day":17,"album":""},{"title":"청풍명월","lyric":"굽이굽이물따라굽이굽이산따라","year":2009,"month":3,"day":31,"album":"I LOVE 제천"},{"title":"그다음은나도몰라요","lyric":"두번다시안올것처럼발걸음뚝끊더","year":2010,"month":1,"day":1,"album":""},{"title":"사랑한다","lyric":"","year":2010,"month":3,"day":1,"album":""},{"title":"남인가요","lyric":"밤이오는소리길을나선다","year":2011,"month":12,"day":19,"album":"주현미의러브레터"},{"title":"내일가면안되나요","lyric":"오늘은가지말아요내일가면안되나요","year":2011,"month":12,"day":19,"album":"주현미의러브레터"},{"title":"뜻밖의이별","lyric":"콧날이찡긋코끝이찡긋","year":2011,"month":12,"day":19,"album":"주현미의러브레터"},{"title":"바보사랑","lyric":"사랑할거면사랑하세요","year":2011,"month":12,"day":19,"album":"주현미의러브레터"},{"title":"사랑이오네","lyric":"저만치오네내사랑이날찾아다가오네","year":2011,"month":12,"day":19,"album":"주현미의러브레터"},{"title":"여백","lyric":"처음만났던그순간부터우린서로","year":2011,"month":12,"day":19,"album":"주현미의러브레터"},{"title":"동행","lyric":"가슴에박힌아픈별들시간은흘러만","year":2014,"month":4,"day":3,"album":"밀리언셀러"},{"title":"가을과겨울사이","lyric":"창을닫기엔아직햇살이뜨겁고","year":2014,"month":8,"day":27,"album":"주현미 30TH ANNIVERSARY ALBUM"},{"title":"빗속에서","lyric":"빗속을혼자걸으며그대를떠올리네요","year":2014,"month":8,"day":27,"album":"주현미 30TH ANNIVERSARY ALBUM"},{"title":"소녀일기","lyric":"창가에기대어앉아달빛에비쳐하는말","year":2014,"month":8,"day":27,"album":"주현미 30TH ANNIVERSARY ALBUM"},{"title":"사랑의마법사","lyric":"사랑이무엇인지그리움이무엇인지","year":2016,"month":4,"day":6,"album":"소백산"},{"title":"소백산","lyric":"연화봉천문대에별들이속삭인다","year":2016,"month":4,"day":6,"album":"소백산"},{"title":"그대를불러봅니다","lyric":"가슴깊이새겨놓았던사람하늘이맺어준사람","year":2018,"month":3,"day":25,"album":"부잣집아들 OST"},{"title":"여정","lyric":"아무리예쁜꽃도세월가면지듯이","year":2018,"month":10,"day":5,"album":"여정"},{"title":"석양에띄우는편지","lyric":"꽃보다붉은저녁노을이","year":2019,"month":8,"day":11,"album":"세상에서제일예쁜내딸 OST"},{"title":"꽃피는청계산","lyric":"청룡의기세안고여의주를품은산아","year":2020,"month":6,"day":15,"album":"주현미 20TH"},{"title":"여인의눈물","lyric":"사랑이사랑으로남아있나요기억저편난어디쯤에있나","year":2020,"month":6,"day":15,"album":"주현미 20TH"},{"title":"상심","lyric":"오늘만은잡을수없어요돌아서는그사람을","year":2020,"month":7,"day":22,"album":"주현미 20TH"},{"title":"세번의사랑","lyric":"그리운마음에정처없이걸어도","year":2020,"month":7,"day":22,"album":"주현미 20TH"},{"title":"돌아오지마세요","lyric":"떠날땐말없이훌쩍떠나더니","year":2020,"month":8,"day":19,"album":"주현미 20TH"},{"title":"물망초사연","lyric":"사랑의추억이그림처럼다가와","year":2020,"month":8,"day":19,"album":"주현미 20TH"},{"title":"그대와차차차","lyric":"가슴울려오는리듬소리한껏몸을맡긴채로서로","year":2020,"month":9,"day":25,"album":"주현미 20TH"},{"title":"길","lyric":"수많은사람들스치며지나가고","year":2020,"month":9,"day":25,"album":"주현미 20TH"},{"title":"금동아은동아","lyric":"비바람에흔들린다고꽃이","year":2020,"month":10,"day":30,"album":"주현미 20TH"},{"title":"바람이되어","lyric":"사랑도미움도아무것도내겐","year":2020,"month":10,"day":30,"album":"주현미 20TH"},{"title":"그여자그남자","lyric":"사랑흔한그한마디가왜나를두드리나","year":2020,"month":11,"day":27,"album":"주현미 20TH"},{"title":"천일홍","lyric":"창문너머로햇살가득비추면살며시그대가올까요","year":2020,"month":11,"day":27,"album":"주현미 20TH"},{"title":"WINDS FROM CUBA","lyric":"바람이내게와그날밤그깊고푸른밤처럼날데려가네","year":2021,"month":6,"day":11,"album":"주현미 재즈프로젝트"},{"title":"흐린 비","lyric":"","year":2021,"month":8,"day":20,"album":"주현미 재즈 프로젝트"},{"title":"미시령(그여자)","lyric":"미시령그리운옛길따라저녁노을밟으며","year":2022,"month":3,"day":20,"album":"주현미 재즈 프로젝트"},{"title":"윤중로연가","lyric":"흐드러진벚꽃바람에","year":2022,"month":3,"day":31,"album":"주현미 재즈 프로젝트"},{"title":"오늘이그래요","lyric":"사람들은 누구나 열심히 살면서도","year":2024,"month":11,"day":3,"album":"40주년 기념"},{"title":"안오네","lyric":"안오네내님이아직안오네","year":2025,"month":5,"day":15,"album":"안오네"},{"title":"연정","lyric":"붙잡아도그래도가시렵니까","year":2025,"month":9,"day":15,"album":"소회"},{"title":"오로지","lyric":"미안하단말은말아요한숨도그만거두어요","year":2025,"month":9,"day":15,"album":"소회"},{"title":"이정표","lyric":"그대사랑안에서길을잃고말았죠","year":2025,"month":9,"day":15,"album":"소회"}];
+
+/* TODAY 우선순위 로직 */
+function initToday() {
+  const now = new Date(), tm = now.getMonth() + 1, td = now.getDate();
+  const valid = SONGS.filter(s => s.month && s.day);
+
+  function dist(s) {
+    const raw = Math.abs((s.month - tm) * 30 + (s.day - td));
+    return Math.min(raw, 365 - raw);
+  }
+
+  let pick = null, prio = 0, minD = 9999, closest = null;
+  for (const s of valid) {
+    const d = dist(s);
+    if (d < minD) { minD = d; closest = s; }
+    const exact = s.month === tm && s.day === td;
+    if      (exact        && prio < 3) { pick = s; prio = 3; }
+    else if (d <= 7       && prio < 2) { pick = s; prio = 2; }
+    else if (s.month === tm && prio < 1) { pick = s; prio = 1; }
+  }
+  if (!pick) { pick = closest; prio = 0; }
+
+  const ago = now.getFullYear() - pick.year;
+  const mm  = String(pick.month).padStart(2,'0');
+  const dd  = String(pick.day).padStart(2,'0');
+  const labels = { 3:'★ 오늘 날짜 일치', 2:'이번 주 (7일 이내)', 1:'이번 달', 0:'가장 가까운 날짜' };
+  const cls    = { 3:'p1', 2:'p2', 1:'p3', 0:'p3' };
+
+  const ytQ = encodeURIComponent('주현미 ' + pick.title);
+  const mlQ = encodeURIComponent(pick.title + ' 주현미');
+  const spQ = encodeURIComponent('주현미 ' + pick.title);
+
+  document.getElementById('today-out').innerHTML = `
+    <span class="p-badge ${cls[prio]}">${labels[prio]}</span>
+    <div class="today-song">〈${pick.title}〉</div>
+    <div class="today-info">발매일 ${pick.year}.${mm}.${dd} &nbsp;/&nbsp; ${ago}년 전</div>
+    ${pick.lyric ? `<div class="today-lyric">❝ ${pick.lyric} ❞</div>` : ''}
+    ${pick.album ? `<div class="today-album">📀 ${pick.album}</div>` : ''}
+    <div class="link-row">
+      <a class="mlink" href="https://www.youtube.com/results?search_query=${ytQ}" target="_blank">▶ YouTube</a>
+      <a class="mlink" href="https://www.melon.com/search/total/index.htm?q=${mlQ}" target="_blank">♬ 멜론</a>
+      <a class="mlink" href="https://open.spotify.com/search/${spQ}" target="_blank">🎵 Spotify</a>
+    </div>`;
+}
+
+/* TIMELINE */
+const TL = [
+  {year:1984,era:'1980s',type:'album',title:'쌍쌍파티',sub:'메들리 카세트 · 300만 장 이상 판매',desc:'고속도로 휴게소에서 폭발적으로 팔리며 트로트 부흥의 서막을 연 역사적 음반. 이 성공을 발판으로 이듬해 정식 데뷔했다.',yt:'https://www.youtube.com/results?search_query=%EC%A3%BC%ED%98%84%EB%AF%B8+%EC%8C%8D%EC%8C%8D%ED%8C%8C%ED%8B%B0',ml:null},
+  {year:1985,era:'1980s',type:'album',title:'1집 — 비내리는 영동교',sub:'공식 데뷔 · KBS·MBC 신인상 동시 수상',desc:'국내 최초 약사 출신 가수. 작사 정은이·작곡 남국인. 방송 활동 없이 입소문만으로 대히트. 1987년 갤럽 선호 가요 1위.',yt:'https://www.youtube.com/results?search_query=%EC%A3%BC%ED%98%84%EB%AF%B8+%EB%B9%84%EB%82%B4%EB%A6%AC%EB%8A%94%EC%98%81%EB%8F%99%EA%B5%90',ml:'https://www.melon.com/search/total/index.htm?q=%EB%B9%84%EB%82%B4%EB%A6%AC%EB%8A%94+%EC%98%81%EB%8F%99%EA%B5%90'},
+  {year:1985,era:'1980s',type:'award',title:'KBS·MBC 신인상 · 골든디스크 신인상',sub:'3관왕으로 화려한 데뷔',desc:'데뷔 첫 해 양대 방송사 신인상을 동시 수상. 골든디스크 신인상까지 더하며 역대급 신인으로 기록됐다.',yt:null,ml:null},
+  {year:1986,era:'1980s',type:'hit',title:'눈물의 블루스',sub:'MBC 10대가수상 · 골든디스크 5년 연속 시작',desc:'화려하고 애절한 창법으로 폭넓은 팬층 확보. 1986~1990년 골든디스크 5년 연속 수상의 시작.',yt:'https://www.youtube.com/results?search_query=%EC%A3%BC%ED%98%84%EB%AF%B8+%EB%88%88%EB%AC%BC%EC%9D%98+%EB%B8%94%EB%A3%A8%EC%8A%A4',ml:null},
+  {year:1988,era:'1980s',type:'album',title:'9집 — 신사동 그 사람',sub:'KBS·MBC·골든디스크 모든 대상 동시 석권',desc:'당시 국내 주요 가요 시상식 대상을 모두 동시에 석권한 전무후무한 기록.',yt:'https://www.youtube.com/results?search_query=%EC%A3%BC%ED%98%84%EB%AF%B8+%EC%8B%A0%EC%82%AC%EB%8F%99+%EA%B7%B8+%EC%82%AC%EB%9E%8C',ml:'https://www.melon.com/search/total/index.htm?q=%EC%8B%A0%EC%82%AC%EB%8F%99+%EA%B7%B8+%EC%82%AC%EB%9E%8C'},
+  {year:1989,era:'1980s',type:'hit',title:'짝사랑',sub:'MBC 최고인기가수상',desc:'이호섭 작사·김영광 작곡. 서정적 가사로 팬층을 한층 넓힌 곡.',yt:'https://www.youtube.com/results?search_query=%EC%A3%BC%ED%98%84%EB%AF%B8+%EC%A7%9D%EC%82%AC%EB%9E%91',ml:null},
+  {year:1990,era:'1990s',type:'hit',title:'잠깐만',sub:'가요톱10 15주 진입 · MBC 3년 연속 수상 · FIDOF 아시아 최초',desc:'전성기의 정점. 가요톱10 15주 진입. 국제가요제연맹 디스턴트어코스상 아시아 가수 최초 수상.',yt:'https://www.youtube.com/results?search_query=%EC%A3%BC%ED%98%84%EB%AF%B8+%EC%9E%A0%EA%B9%90%EB%A7%8C',ml:'https://www.melon.com/search/total/index.htm?q=%EC%9E%A0%EA%B9%90%EB%A7%8C+%EC%A3%BC%ED%98%84%EB%AF%B8'},
+  {year:1990,era:'1990s',type:'award',title:'FIDOF 디스턴트어코스상',sub:'아시아 가수 최초 수상',desc:'국제가요제연맹(FIDOF)에서 시상하는 디스턴트어코스상을 아시아 가수로는 최초로 수상.',yt:null,ml:null},
+  {year:1991,era:'1990s',type:'hit',title:'추억으로 가는 당신',sub:'11집',desc:'장르 변동기에도 서정적 감성으로 꾸준히 사랑받은 곡.',yt:'https://www.youtube.com/results?search_query=%EC%A3%BC%ED%98%84%EB%AF%B8+%EC%B6%94%EC%96%B5%EC%9C%BC%EB%A1%9C+%EA%B0%80%EB%8A%94+%EB%8B%B9%EC%8B%A0',ml:null},
+  {year:1992,era:'1990s',type:'hit',title:'또 만났네요',sub:'12집',desc:'맑은 음색과 부드러운 고음이 빛나는 곡. 트로트가 위축되던 시기에도 꾸준한 사랑을 받았다.',yt:'https://www.youtube.com/results?search_query=%EC%A3%BC%ED%98%84%EB%AF%B8+%EB%98%90+%EB%A7%8C%EB%82%AC%EB%84%A4%EC%9A%94',ml:null},
+  {year:1995,era:'1990s',type:'award',title:'문화체육부장관 표창',sub:'한국연예협회 선행연예인 표창',desc:'사회 공헌과 봉사 활동을 인정받아 문화체육부장관 표창 수상.',yt:null,ml:null},
+  {year:2000,era:'2000s',type:'album',title:'15집 — 러브레터',sub:'〈러브레터〉 〈차한잔어때요〉 수록',desc:'2000년대 새 출발을 알린 앨범.',yt:'https://www.youtube.com/results?search_query=%EC%A3%BC%ED%98%84%EB%AF%B8+%EB%9F%AC%EB%B8%8C%EB%A0%88%ED%84%B0',ml:null},
+  {year:2005,era:'2000s',type:'award',title:'KBS 가요무대 최다출연 1위',sub:'2022년에도 동일 기록 유지',desc:'가요무대 출연 횟수 1위를 2005년 집계 이후 2022년까지 변함없이 유지.',yt:null,ml:null},
+  {year:2008,era:'2000s',type:'hit',title:'사랑한다 (feat. 조PD)',sub:'힙합 × 트로트 크로스오버',desc:'힙합과 트로트의 이색 결합으로 젊은 세대에게 이름을 각인.',yt:'https://www.youtube.com/results?search_query=%EC%A3%BC%ED%98%84%EB%AF%B8+%EC%82%AC%EB%9E%91%ED%95%9C%EB%8B%A4',ml:null},
+  {year:2009,era:'2000s',type:'hit',title:'짜라자짜 (with 소녀시대 서현)',sub:'세대 초월 듀엣',desc:'세미트로트 협업으로 세대를 초월한 영향력을 증명.',yt:'https://www.youtube.com/results?search_query=%EC%A3%BC%ED%98%84%EB%AF%B8+%EC%84%9C%ED%98%84+%EC%A7%9C%EB%9D%BC%EC%9E%90%EC%A7%9C',ml:null},
+  {year:2010,era:'2000s',type:'award',title:'대통령 표창 · 라디오 MC',sub:'대중문화예술상 · KBS 해피FM 주현미의 러브레터',desc:'대중문화예술상 대통령 표창. KBS 해피FM 〈주현미의 러브레터〉 MC 시작 (2010~2016, 2020~).',yt:null,ml:null},
+  {year:2014,era:'2000s',type:'album',title:'데뷔 30주년 기념 앨범',sub:'가을과 겨울 사이 · 빗속에서 수록',desc:'활동 30주년 기념 앨범.',yt:'https://www.youtube.com/results?search_query=%EC%A3%BC%ED%98%84%EB%AF%B8+30%EC%A3%BC%EB%85%84',ml:null},
+  {year:2020,era:'2000s',type:'album',title:'20집 — 여인의 눈물 (데뷔 35주년)',sub:'정규 20집 · 에세이 《추억으로 가는 당신》 출간',desc:'데뷔 35주년 기념 정규 20집. 〈여인의 눈물〉 〈꽃피는 청계산〉 〈천일홍〉 등 수록.',yt:'https://www.youtube.com/results?search_query=%EC%A3%BC%ED%98%84%EB%AF%B8+%EC%97%AC%EC%9D%B8%EC%9D%98+%EB%88%88%EB%AC%BC',ml:'https://www.melon.com/search/total/index.htm?q=%EC%A3%BC%ED%98%84%EB%AF%B8+20%EC%A7%91'},
+  {year:2021,era:'2000s',type:'album',title:'주현미 & 필윤 Jazz Project',sub:'트로트 명곡의 재즈 재해석',desc:'〈비내리는 영동교〉 〈신사동 그 사람〉 등을 재즈로 재해석한 도전적 앨범.',yt:'https://www.youtube.com/results?search_query=%EC%A3%BC%ED%98%84%EB%AF%B8+%EC%9E%AC%EC%A6%88',ml:null},
+  {year:2024,era:'2000s',type:'award',title:'데뷔 40주년',sub:'〈오늘이 그래요〉 발매',desc:'1984년 쌍쌍파티로 시작한 음악 여정 40주년. 40년간 쉬지 않고 무대를 지켜온 트로트의 여왕.',yt:null,ml:null},
+  {year:2025,era:'2000s',type:'album',title:'신보 《소회》 · 《안오네》',sub:'연정 · 오로지 · 이정표 · 안오네',desc:'2025년에도 현역으로 신보 발표. 〈연정〉 〈오로지〉 〈이정표〉 등 신곡으로 현재진행형 음악 인생을 이어가다.',yt:'https://www.youtube.com/results?search_query=%EC%A3%BC%ED%98%84%EB%AF%B8+%EC%86%8C%ED%9A%8C',ml:null},
+];
+
+let curF = 'all';
+const TAG = { album:'앨범', hit:'대표곡', award:'수상/기록' };
+const ERA = { '1980s':'1980s', '1990s':'1990s', '2000s':'2000s+' };
+
+function setF(f, btn) {
+  curF = f;
+  document.querySelectorAll('.fbtn').forEach(b => b.classList.remove('on'));
+  btn.classList.add('on'); renderTL();
+}
+function renderTL() {
+  const q = document.getElementById('sq').value.toLowerCase();
+  const c = document.getElementById('tl'); c.innerHTML = '';
+  ['1980s','1990s','2000s'].forEach(era => {
+    const items = TL.filter(d => {
+      const mE = curF==='all' || curF===d.type || curF===d.era;
+      const mQ = !q || d.title.toLowerCase().includes(q) || String(d.year).includes(q) ||
+                 (d.sub||'').toLowerCase().includes(q) || (d.desc||'').toLowerCase().includes(q);
+      return mE && mQ && d.era === era;
+    });
+    if (!items.length) return;
+    const g = document.createElement('div'); g.className='era-group';
+    g.innerHTML = `<div class="era-label">${ERA[era]}</div>`;
+    items.forEach(d => {
+      const el = document.createElement('div'); el.className='tl-item';
+      el.innerHTML = `
+        <div class="item-yr">${d.year}</div>
+        <div class="item-spine"><div class="spine-dot"></div><div class="spine-line"></div></div>
+        <div class="item-body">
+          <span class="item-tag ${d.type}">${TAG[d.type]}</span>
+          <div class="item-title">${d.title}</div>
+          <div class="item-sub">${d.sub||''}</div>
+          <div class="item-detail"><div class="detail-in">
+            <div class="detail-desc">${d.desc||''}</div>
+            <div class="detail-links">
+              ${d.yt?`<a class="mlink" href="${d.yt}" target="_blank">▶ YouTube</a>`:''}
+              ${d.ml?`<a class="mlink" href="${d.ml}" target="_blank">♬ 멜론</a>`:''}
+            </div>
+          </div></div>
+        </div>`;
+      el.addEventListener('click', () => {
+        const was = el.classList.contains('open');
+        document.querySelectorAll('.tl-item.open').forEach(e => e.classList.remove('open'));
+        if (!was) el.classList.add('open');
+      });
+      g.appendChild(el);
+    });
+    c.appendChild(g);
+  });
+}
+
+/* GUESTBOOK */
+const GBK = 'juhyunmi_gb_v4';
+const esc = s => s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+const gbL = () => { try { return JSON.parse(localStorage.getItem(GBK)||'[]'); } catch(e){return[];} };
+const gbS = a => { try { localStorage.setItem(GBK, JSON.stringify(a)); } catch(e){} };
+
+function gbSubmit() {
+  const name = document.getElementById('gb-name').value.trim();
+  const song = document.getElementById('gb-song').value;
+  const msg  = document.getElementById('gb-msg').value.trim();
+  if (!name || !msg) { alert('닉네임과 메시지를 입력해주세요.'); return; }
+  const a = gbL();
+  a.unshift({ name, song, msg, date: new Date().toLocaleDateString('ko-KR') });
+  gbS(a);
+  document.getElementById('gb-name').value = '';
+  document.getElementById('gb-song').value = '';
+  document.getElementById('gb-msg').value  = '';
+  renderGB();
+}
+function renderGB() {
+  const w = document.getElementById('gb-list'); const a = gbL();
+  if (!a.length) { w.innerHTML='<div class="gb-empty">첫 번째 방명록을 남겨보세요 ✦</div>'; return; }
+  w.innerHTML = a.map(e => `
+    <div class="gb-entry">
+      <div class="gb-head">
+        <span class="gb-name">${esc(e.name)}</span>
+        ${e.song?`<span class="gb-song">♪ ${esc(e.song)}</span>`:''}
+        <span class="gb-date">${e.date}</span>
+      </div>
+      <div class="gb-msg">${esc(e.msg)}</div>
+    </div>`).join('');
+}
+
+initToday();
+renderTL();
+renderGB();
+</script>
+</body>
+</html>
