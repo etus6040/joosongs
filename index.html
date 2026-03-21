@@ -205,50 +205,75 @@ html,body{background:var(--bg);color:var(--tx);font-family:'Noto Serif KR',serif
 
 <script>
 /* ═══════════════════════════════════════════════════════
-   COVER VIDEO — /api/covers 에서 목록 가져옴
-   날짜 시드: 매일 다른 영상, 같은 날 새로고침은 동일 영상
+   유튜브 API 목록 가져오기 & 랜덤 추천 로직
 ═══════════════════════════════════════════════════════ */
-let covers = [], coverIdx = 0;
-
-function dateSeed() {
-  const d = new Date();
-  return d.getFullYear() * 10000 + (d.getMonth() + 1) * 100 + d.getDate();
-}
-function seededIdx(seed, n) {
-  const x = Math.sin(seed + 1) * 9999;
-  return Math.floor((x - Math.floor(x)) * n);
-}
+let covers = []; // 서버에서 받아온 영상 목록 저장용
 
 async function loadCovers() {
   try {
+    // 1. Vercel 서버리스 함수(/api/covers)에 데이터 요청
     const res = await fetch('/api/covers');
-    if (!res.ok) throw new Error(`서버 오류 ${res.status}`);
-    covers = await res.json();
-    if (!Array.isArray(covers) || covers.length === 0) throw new Error('영상 목록이 비어 있습니다.');
 
-    coverIdx = seededIdx(dateSeed(), covers.length);
-    showCover(coverIdx);
-    document.getElementById('cover-next-btn').disabled = false;
+    if (!res.ok) {
+      const errData = await res.json();
+      throw new Error(errData.error || '서버 응답 오류');
+    }
+
+    covers = await res.json(); // [{id, title}, ...] 형태의 배열
+
+    if (covers && covers.length > 0) {
+      // 2. 가져온 목록 중 랜덤하게 하나 선택 (새로고침 시 매번 바뀜)
+      const randomIdx = Math.floor(Math.random() * covers.length);
+      showCover(randomIdx);
+
+      // '다른 노래 추천' 버튼 활성화
+      const btn = document.getElementById('cover-next-btn');
+      if (btn) btn.disabled = false;
+    } else {
+      throw new Error('검색된 영상이 없습니다.');
+    }
   } catch (e) {
-    document.getElementById('cover-skeleton').textContent = '';
-    document.getElementById('cover-err').textContent = '영상을 불러오지 못했습니다 — ' + e.message;
+    console.error('API 에러:', e);
+    const errEl = document.getElementById('cover-err');
+    if (errEl) errEl.textContent = '영상을 불러오지 못했습니다: ' + e.message;
+    const skel = document.getElementById('cover-skeleton');
+    if (skel) skel.style.display = 'none';
   }
 }
 
+// 특정 인덱스의 영상을 화면에 표시
 function showCover(idx) {
   const v = covers[idx];
-  const iframe = document.getElementById('cover-iframe');
-  document.getElementById('cover-skeleton').style.display = 'none';
-  iframe.src = `https://www.youtube.com/embed/${v.id}?rel=0&modestbranding=1`;
-  iframe.style.opacity = '1';
-  document.getElementById('cover-title').textContent = v.title;
-  document.getElementById('cover-info').textContent = `${idx + 1} / ${covers.length}`;
+  const iframe   = document.getElementById('cover-iframe');
+  const skeleton = document.getElementById('cover-skeleton');
+  const titleEl  = document.getElementById('cover-title');
+  const infoEl   = document.getElementById('cover-info');
+
+  if (skeleton) skeleton.style.display = 'none';
+  if (iframe) {
+    iframe.src = `https://www.youtube.com/embed/${v.id}?rel=0&modestbranding=1&autoplay=0`;
+    iframe.style.opacity = '1';
+  }
+  if (titleEl) titleEl.textContent = v.title;
+  if (infoEl)  infoEl.textContent  = `오늘의 추천 영상 (${idx + 1} / ${covers.length})`;
 }
 
+// '다른 노래 보기' 버튼 클릭 시 — 중복 없이 순환
+let shownIdxSet = new Set();
 function nextCover() {
-  coverIdx = (coverIdx + 1) % covers.length;
-  showCover(coverIdx);
+  if (covers.length === 0) return;
+  // 전부 봤으면 초기화
+  if (shownIdxSet.size >= covers.length) shownIdxSet.clear();
+  // 아직 안 본 것 중 랜덤
+  let next;
+  do { next = Math.floor(Math.random() * covers.length); }
+  while (shownIdxSet.has(next));
+  shownIdxSet.add(next);
+  showCover(next);
 }
+
+// 페이지 로드 시 실행
+loadCovers();
 
 loadCovers();
 
