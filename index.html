@@ -239,33 +239,50 @@ html,body{background:var(--bg);color:var(--tx);font-family:'Noto Serif KR',serif
 </div><!-- /app -->
 
 <script>
+
+// 날짜 기반 캐시 키 (하루가 지나면 자동 만료)
+function todayKey(prefix) {
+  const d = new Date();
+  return prefix + '_' + d.getFullYear() + '_' + (d.getMonth()+1) + '_' + d.getDate();
+}
+
 /* ═══════════════════════════════════════════════════════
    유튜브 API 목록 가져오기 & 랜덤 추천 로직
 ═══════════════════════════════════════════════════════ */
 let covers = []; // 서버에서 받아온 영상 목록 저장용
 
 async function loadCovers() {
+  // 오늘 캐시 있으면 API 호출 없이 사용
+  const cacheKey = todayKey('covers');
   try {
-    // 1. Vercel 서버리스 함수(/api/covers)에 데이터 요청
-    const res = await fetch('/api/covers');
+    const cached = localStorage.getItem(cacheKey);
+    if (cached) {
+      covers = JSON.parse(cached);
+      if (covers && covers.length > 0) {
+        const randomIdx = Math.floor(Math.random() * covers.length);
+        showCover(randomIdx);
+        const btn = document.getElementById('cover-next-btn');
+        if (btn) btn.disabled = false;
+        return;
+      }
+    }
+  } catch(e) {}
 
+  try {
+    const res = await fetch('/api/covers');
     if (!res.ok) {
       const errData = await res.json();
       throw new Error(errData.error || '서버 응답 오류');
     }
-
-    covers = await res.json(); // [{id, title}, ...] 형태의 배열
-
+    covers = await res.json();
     if (covers && covers.length > 0) {
-      // 2. 가져온 목록 중 랜덤하게 하나 선택 (새로고침 시 매번 바뀜)
+      try { localStorage.setItem(cacheKey, JSON.stringify(covers)); } catch(e) {}
       const randomIdx = Math.floor(Math.random() * covers.length);
       showCover(randomIdx);
-
-      // '다른 노래 추천' 버튼 활성화
       const btn = document.getElementById('cover-next-btn');
       if (btn) btn.disabled = false;
     } else {
-      throw new Error('검색된 영상이 없습니다.');
+      throw new Error('영상 목록이 비어 있습니다.');
     }
   } catch (e) {
     console.error('API 에러:', e);
@@ -321,12 +338,31 @@ async function loadTodayVideo(title) {
   const area = document.getElementById('today-embed-area');
   if (!area) return;
   area.innerHTML = '<div class="today-embed-loading">영상 불러오는 중...</div>';
+
+  // 브라우저 캐시 (오늘 날짜 + 곡제목 기준)
+  const cacheKey = todayKey('tv_' + title.replace(/[^a-zA-Z0-9가-힣]/g, '_'));
+  try {
+    const cached = localStorage.getItem(cacheKey);
+    if (cached) {
+      const d = JSON.parse(cached);
+      if (d && d.id) {
+        area.innerHTML =
+          '<div class="video-frame"><iframe src="https://www.youtube.com/embed/' + d.id +
+          '?rel=0&modestbranding=1" allowfullscreen loading="lazy" ' +
+          'allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture">' +
+          '</iframe></div>';
+        return;
+      }
+    }
+  } catch(e) {}
+
   try {
     const q = encodeURIComponent('주현미 ' + title);
     const r = await fetch('/api/today-video?q=' + q);
     if (!r.ok) throw new Error();
     const d = await r.json();
     if (!d.id) throw new Error();
+    try { localStorage.setItem(cacheKey, JSON.stringify(d)); } catch(e) {}
     area.innerHTML =
       '<div class="video-frame"><iframe src="https://www.youtube.com/embed/' + d.id +
       '?rel=0&modestbranding=1" allowfullscreen loading="lazy" ' +
@@ -571,12 +607,16 @@ function renderNews(items) {
   grid.innerHTML = items.map(a => {
     const ago  = thisYear - parseInt(a.d.slice(0, 4));
     const ymd  = a.d.replace(/\./g, '. ');
-    // 네이버 뉴스 라이브러리 원문 링크 (해당 날짜)
+    // 기사 제목으로 네이버 뉴스 라이브러리 키워드 검색
     const [y, mo, dy] = a.d.split('.');
-    const libUrl = 'https://newslibrary.naver.com/search/searchByDate.naver?' +
-      'searchType=1&query=%EC%A3%BC%ED%98%84%EB%AF%B8' +
-      '&startDate=' + y + '-' + mo + '-' + dy +
-      '&endDate='   + y + '-' + mo + '-' + dy;
+    const searchParams = JSON.stringify({
+      mode: 1, sort: 0, trans: 1, pageSize: 10,
+      keyword: a.t,
+      startDate: y + '-01-01',
+      endDate:   y + '-12-31'
+    });
+    const libUrl = 'https://newslibrary.naver.com/search/searchByKeyword.naver#' +
+      encodeURIComponent(searchParams);
     return '<a class="news-card" href="' + libUrl + '" target="_blank" rel="noopener">' +
       '<div class="news-card-meta">' + ymd + ' &nbsp;·&nbsp; ' + a.p + ' &nbsp;·&nbsp; <em>' + ago + '년 전</em></div>' +
       '<div class="news-card-title">' + a.t + '</div>' +
